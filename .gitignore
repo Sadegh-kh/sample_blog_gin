@@ -1,0 +1,44 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Vendor directory (if not using Go Modules)
+vendor/
+
+# Dependency directories and build cache
+**/node_modules/
+**/dist/
+.idea/
+.vscode/
+.DS_Store
+
+# Go workspace and cache files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*~
+
+# Output folders (if any)
+bin/
+build/
+release/
+
+# Go specific
+/go.sum
+/go.work
+/go.work.sum
+
+# Local environment files
+.env
+.env.local
+
+# Coverage reports
+*.cover
+coverage.out
+testdata/
