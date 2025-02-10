@@ -1,6 +1,9 @@
 package authservice
 
-import "blog/api/form"
+import (
+	"blog/api/form"
+	"fmt"
+)
 
 func (authS Service) Register(user form.UserRegister) error {
 
@@ -13,14 +16,20 @@ func (authS Service) Register(user form.UserRegister) error {
 }
 
 func (authS Service) ValidationRegister(user form.UserRegister) error {
-	err := authS.Storage.CheckUsername(user.UserName)
+	exist, err := authS.Storage.CheckUniqUsername(user.UserName)
 	if err != nil {
 		return err
+	} else if !exist {
+		return fmt.Errorf("username exist")
+
 	}
 
-	err = authS.Storage.CheckEmail(user.Email)
+	exist, err = authS.Storage.CheckUniqEmail(user.Email)
 	if err != nil {
 		return err
+	} else if !exist {
+		return fmt.Errorf("email exist")
+
 	}
 
 	return nil

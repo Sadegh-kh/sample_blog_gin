@@ -1,14 +1,12 @@
 package api
 
 import (
-	v1 "blog/api/v1"
-
 	"github.com/gin-gonic/gin"
 )
 
-func Register(r *gin.Engine) {
+func (h ApiHandller) Register(r *gin.Engine) {
 
 	g := r.Group("/api")
-	v1.Register(g)
+	h.V1Handller.Register(g)
 
 }

@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func login(c *gin.Context) {
+func (uh UserHandller) login(c *gin.Context) {
 
 	c.JSON(200, gin.H{
 		"message": "login",
@@ -14,7 +14,7 @@ func login(c *gin.Context) {
 
 }
 
-func register(c *gin.Context) {
+func (uh UserHandller) register(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "register"})
 }

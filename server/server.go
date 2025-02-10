@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Run() {
+func (s Server) Run() {
 
 	r := gin.Default()
 
@@ -19,7 +19,7 @@ func Run() {
 	r.LoadHTMLFiles(templates...)
 
 	web.Register(r)
-	api.Register(r)
+	s.ApiHanddler.Register(r)
 
 	r.GET("/health-check", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"messgae": "ok"})
@@ -29,4 +29,8 @@ func Run() {
 		log.Fatal(err)
 	}
 
+}
+
+type Server struct {
+	ApiHanddler api.ApiHandller
 }

@@ -4,12 +4,16 @@ import (
 	"blog/api/form"
 )
 
-type storage interface {
+type Storage interface {
 	Register(user form.UserRegister) error
-	CheckUsername(userName string) error
-	CheckEmail(email string) error
+	CheckUniqUsername(userName string) (bool, error)
+	CheckUniqEmail(email string) (bool, error)
 }
 
 type Service struct {
-	Storage storage
+	Storage Storage
+}
+
+func New(s Storage) Service {
+	return Service{Storage: s}
 }
