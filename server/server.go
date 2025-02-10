@@ -2,6 +2,7 @@ package server
 
 import (
 	"blog/api"
+	"blog/web"
 	"log"
 	"net/http"
 	"path/filepath"
@@ -17,6 +18,7 @@ func Run() {
 	templates = append(templates, "templates/index.html")
 	r.LoadHTMLFiles(templates...)
 
+	web.Register(r)
 	api.Register(r)
 
 	r.GET("/health-check", func(c *gin.Context) {
